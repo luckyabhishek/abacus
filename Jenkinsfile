@@ -1,9 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('CheckStyle') {
       steps {
-        echo 'Hi'
+        echo 'CheckStyling Done'
+      }
+    }
+
+    stage('Tests') {
+      steps {
+        echo 'Unit Tests'
+      }
+    }
+
+    stage('PR Voting') {
+      steps {
+        echo 'Reviewed The code'
       }
     }
 
