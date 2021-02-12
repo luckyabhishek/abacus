@@ -7,20 +7,9 @@ pipeline {
       }
     }
 
-    stage('Static Checks') {
-      parallel {
-        stage('Unit Tests') {
-          steps {
-            echo 'Unit Test Done'
-          }
-        }
-
-        stage('Integration Tests') {
-          steps {
-            echo 'Optional If we have dependencies'
-          }
-        }
-
+    stage('Unit Tests') {
+      steps {
+        echo 'Unit Test Done'
       }
     }
 
