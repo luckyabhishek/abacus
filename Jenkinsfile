@@ -1,21 +1,49 @@
 pipeline {
   agent any
   stages {
-    stage('CheckStyle') {
-      steps {
-        echo 'CheckStyling Done'
+    stage('Sanity Checks') {
+      parallel {
+        stage('CheckStyle') {
+          steps {
+            echo 'CheckStyling Done'
+          }
+        }
+
+        stage('Local Build') {
+          steps {
+            echo 'Built Locally'
+          }
+        }
+
+        stage('Sonar Scan (Code Quality)') {
+          steps {
+            echo 'Done Sonar Scan'
+          }
+        }
+
       }
     }
 
-    stage('Tests') {
-      steps {
-        echo 'Unit Tests'
+    stage('Sanity Tests') {
+      parallel {
+        stage('Unit Tests') {
+          steps {
+            echo 'Unit Test Done'
+          }
+        }
+
+        stage('Integration Tests ') {
+          steps {
+            echo 'Optional If we have dependencies'
+          }
+        }
+
       }
     }
 
     stage('PR Voting') {
       steps {
-        echo 'Reviewed The code'
+        echo 'Verified Central Build'
       }
     }
 
