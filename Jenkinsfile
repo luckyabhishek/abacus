@@ -1,27 +1,26 @@
 pipeline {
   agent any
   stages {
-    stage('Pre-Production BG Deploy') {
-      steps {
-        echo 'CheckStyling Done'
-      }
-    }
+    stage('Production Deployments') {
+      parallel {
+        stage('EU10') {
+          steps {
+            echo 'deploying'
+          }
+        }
 
-    stage('Smoke Test') {
-      steps {
-        echo 'Unit Test Done'
-      }
-    }
+        stage('US10') {
+          steps {
+            echo 'deployed'
+          }
+        }
 
-    stage('Pre-Production (Confirm BG)') {
-      steps {
-        echo 'Verified Central Build'
-      }
-    }
+        stage('EU20') {
+          steps {
+            echo 'deployed'
+          }
+        }
 
-    stage('Production (BG Deploy)') {
-      steps {
-        echo 'APIs Tested'
       }
     }
 
