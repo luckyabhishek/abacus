@@ -1,49 +1,45 @@
 pipeline {
   agent any
   stages {
-    stage('Sanity Checks') {
+    stage('PR Voting') {
       parallel {
-        stage('CheckStyle') {
+        stage('Checkmarx') {
           steps {
             echo 'CheckStyling Done'
           }
         }
 
-        stage('Local Build') {
+        stage('Local Build (With Tests/Checkstyle)') {
           steps {
             echo 'Built Locally'
           }
         }
 
-        stage('Sonar Scan (Code Quality)') {
+        stage('Fortify') {
           steps {
-            echo 'Done Sonar Scan'
+            echo 'fdsd'
           }
         }
 
-      }
-    }
-
-    stage('Sanity Tests') {
-      parallel {
-        stage('Unit Tests') {
+        stage('Open Source Vulnerabity(FOSS)') {
           steps {
-            echo 'Unit Test Done'
+            echo 'fdefew'
           }
         }
 
-        stage('Integration Tests ') {
+        stage('PPMS') {
           steps {
-            echo 'Optional If we have dependencies'
+            echo 'frewferw'
           }
         }
 
-      }
-    }
+        stage('whitesource') {
+          steps {
+            echo 'ferwfre'
+            echo 'ferfwr'
+          }
+        }
 
-    stage('PR Voting') {
-      steps {
-        echo 'Verified Central Build'
       }
     }
 
